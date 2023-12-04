@@ -9,21 +9,34 @@
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <div id="app">
-<h2>Hello, {{name}}</h2>
-<input type="text" v-model="name">
-<button @click="name = ''" :disabled="name.length === 0">X</button>
-    </div>
+    <div id="app"></div>
 
 <script>
-  const { createApp } = Vue
-  const app = createApp({
+
+    /*
+v-model
+v-bind
+v-on
+v-if
+v-else
+v-show
+    
+    */
+  const { createApp } = Vue;
+  const rootComponent = {
+    template: `
+    <h2>Hello, {{name}}</h2>
+    <input type="text" v-model="name">
+    <button @click="name = ''" :disabled="name.length === 0">X</button>
+    `,
     data(){
         return {
             name: ''
         }
     }
-  });
+  };
+
+  const app = createApp(rootComponent);
 
 app.mount('#app')
 </script>
