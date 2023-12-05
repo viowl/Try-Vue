@@ -15,19 +15,31 @@
 
     /*
 v-model
-v-bind
-v-on
-v-if
+  v-bind
+  v-on
+
+v-bind: присвоение js логики
+v-on: слушатель событий
+v-if создается и пропадает
 v-else
-v-show
-    
+v-show всегда есть display none ili block
+
     */
   const { createApp } = Vue;
   const rootComponent = {
     template: `
-    <h2>Hello, {{name}}</h2>
+    
     <input type="text" v-model="name">
-    <button @click="name = ''" :disabled="name.length === 0">X</button>
+    <button v-on:click="name = ''" v-bind:disabled="name.length === 0">X</button>
+    <div v-if="name.length < 3">
+        <span>Дядя введи больше 2х символов</span>
+    </div>
+
+    <div v-show="name.length >= 3">
+        <h2>Hello, {{name}}</h2>
+        <button>ЖМАКНИ</button>
+        </div>
+
     `,
     data(){
         return {
